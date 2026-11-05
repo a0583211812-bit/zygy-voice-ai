@@ -17,9 +17,9 @@ services:
       - key: TTS_MODEL
         value: "gemini-3.8-flash-tts"
       - key: EXTENSIONS
-        value: "[{\"p\":\"7\",\"m\":\"2\",\"g\":\"שלום אני העבד של נון שין שאל אותי כל דבר ובסיום הקש סולמית\",\"x\":\"\"}]"
+        value: "[{\"p\":\"7\",\"m\":\"2\",\"g\":\"שלום אני שייך לנון שין שאל אותי כל דבר ובסיום הקש סולמית\",\"x\":\"\"}]"
       - key: MAX_WORDS
-        value: "159"
+        value: "201"
       - key: EXTRA_INSTRUCTION
         value: ""
       - key: GEMINI_API_KEYS
