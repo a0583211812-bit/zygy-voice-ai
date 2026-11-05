@@ -29,10 +29,10 @@ const MAXW = Math.min(300, Math.max(5, parseInt(process.env.MAX_WORDS, 10) || 25
 const EXTRA = String(process.env.EXTRA_INSTRUCTION || '').replace(/\s+/g, ' ').trim().slice(0, 2000);
 
 const buildSys = (mode, extra) => 'אתה עוזר קולי בטלפון. ' + MODES[MODES[String(mode)] ? String(mode) : '2'] +
-  ' חובה מוחלטת: שמור על האופי הזה. ענה בעברית בקצרה ובבהירות, בעד ' + MAXW + ' מילים, בלי רשימות ובלי סימנים מיוחדים. ' +
-  'אם המשתמש מבקש להחליף קול (למשל: "תחליף קול", "דבר בקול אחר"), עליך לענות בדיוק במילה CHANGE_VOICE ולא להוסיף שום מילה אחרת. ' +
+  ' ענה בעברית בקצרה ובבהירות, בעד ' + MAXW + ' מילים, בלי רשימות ובלי סימנים מיוחדים. ' +
   (EXTRA ? ' הנחיה כללית מהבעלים: ' + EXTRA + ' ' : '') +
-  (extra ? ' הנחיה לשלוחה הזאת מהבעלים: ' + extra + ' ' : '');
+  (extra ? ' הנחיה לשלוחה הזאת מהבעלים: ' + extra + ' ' : '') +
+  ' פקודת מערכת קריטית חובה: אם המשתמש מבקש ממך להחליף קול, לשנות קול, או לדבר בקול אחר, אסור לך לענות לו בשום צורה! עליך להחזיר אך ורק את המילה CHANGE_VOICE באנגלית.';
 
 let CFG = [];
 try { CFG = JSON.parse(process.env.EXTENSIONS || '[]'); } catch (e) { CFG = []; }
@@ -261,9 +261,9 @@ app.all(['/yemot', '/yemot/:e'], async (req, res) => {
       let text = parts.filter(p => !p.thought).map(p => p.text || '').join('').trim();
       if (!text) throw new Error('empty answer ' + JSON.stringify((a.promptFeedback || {})).slice(0, 100));
 
-      if (text.includes('CHANGE_VOICE')) {
+      if (text.includes('CHANGE_VOICE') || text.includes('להחליף קול') || text.includes('תחליף קול') || text.includes('קול אחר')) {
         s.v = (s.v + 1) % AVAILABLE_VOICES.length;
-        text = 'בסדר גמור, החלפתי את הקול. איך אוכל להמשיך לעזור?';
+        text = 'בסדר גמור, הקול הוחלף. איך אוכל לעזור כעת?';
       }
 
       const t2 = Date.now();
