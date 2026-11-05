@@ -13,13 +13,13 @@ services:
       - key: EXT_PATH
         value: "6"
       - key: TEXT_MODEL
-        value: "gemini-3.6-flash"
+        value: "Gemini 1.5 Flash-8B"
       - key: TTS_MODEL
-        value: "gemini-3.8-flash-tts"
+        value: "gemini-1.5-flash"
       - key: EXTENSIONS
         value: "[{\"p\":\"6\",\"m\":\"2\",\"g\":\"שלום שאל אותי כל דבר ובסיום הקש סולמית\",\"x\":\"\"}]"
       - key: MAX_WORDS
-        value: "300"
+        value: "199"
       - key: EXTRA_INSTRUCTION
         value: ""
       - key: GEMINI_API_KEYS
