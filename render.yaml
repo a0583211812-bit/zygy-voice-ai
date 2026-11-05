@@ -11,15 +11,15 @@ services:
       - key: NODE_VERSION
         value: "22"
       - key: EXT_PATH
-        value: "6"
+        value: "4"
       - key: TEXT_MODEL
         value: "gemini-3.6-flash"
       - key: TTS_MODEL
         value: "gemini-3.8-flash-tts"
       - key: EXTENSIONS
-        value: "[{\"p\":\"6\",\"m\":\"2\",\"g\":\"שלום אני זיגי שאל אותי כל דבר ובסיום הקש סולמית\",\"x\":\"\"}]"
+        value: "[{\"p\":\"4\",\"m\":\"2\",\"g\":\"שלום אני זיגי שאל אותי כל דבר ובסיום הקש סולמית\",\"x\":\"\"}]"
       - key: MAX_WORDS
-        value: "25"
+        value: "300"
       - key: EXTRA_INSTRUCTION
         value: ""
       - key: GEMINI_API_KEYS
